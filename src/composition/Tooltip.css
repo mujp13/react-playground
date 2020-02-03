@@ -3,6 +3,9 @@
   cursor: pointer;
 }
 
+.Tooltip-content {
+  color: #01A800;
+}
 
 .Tooltip-message {
   background-color: hsla(0, 0%, 10%, 0.9);
@@ -19,6 +22,7 @@
   white-space: nowrap;
 }
 
+
 /* triangle */
 .Tooltip-message:after {
   border-left: 5px solid transparent;
@@ -34,12 +38,14 @@
   width: 0;
 }
 
+
 /* start hidden */
 .Tooltip-message {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
 }
+
 
 /* show on hover */
 .Tooltip:hover > .Tooltip-message {
