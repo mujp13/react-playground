@@ -32,11 +32,14 @@ export default class DemonymApp extends React.Component {
     const demon = this.state.selected
           ? <Demonym name={this.state.selected['citizen-names']} country={this.state.selected.name}/>
           : <div className="demonym_app__placeholder">Select a country above</div>;
+    
+    //console.log(this.state.selected['citizen-names'])
+    //console.log(this.state.selected.name)
 
     return (
       <div className="demonym_app">
         <CountrySelector 
-                countries={[{name:"Barbados"}, {name:"Bahrain"}]}
+                countries={this.state.countries}
                 changeHandler={selected => this.setSelected(selected)}/>
         {demon}
       </div>
