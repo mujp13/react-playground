@@ -7,27 +7,35 @@ export default class RegistrationForm extends Component {
     //this.nameInput = React.createRef();
     this.state = {
       name: {
-        value: ''
+        value: '',
+        touched: false
       },
       password: {
-        value: ''
+        value: '',
+        touched: false
       },
       repeatPassword: {
-        value: ''
+        value: '',
+        touched: false
       }
     };
   }
 
   updateName(name) {
-    this.setState({ name: { value: name } });
+    this.setState({ name: { value: name, touched: true } });
   }
 
   updatePassword(password) {
-    this.setState({ password: { value: password } });
+    this.setState({ password: { value: password, touched: true } });
   }
 
   updateRepeatPassword(repeatPassword) {
-    this.setState({ repeatPassword: { value: repeatPassword } });
+    this.setState({ 
+      repeatPassword: { 
+        value: repeatPassword, 
+        touched: true 
+      } 
+    });
   }
 
   handleSubmit(event) {
@@ -88,7 +96,9 @@ export default class RegistrationForm extends Component {
             id="name"
             onChange={e => this.updateName(e.target.value)}
           />
-          <ValidationError message={this.validateName()}/>
+          {this.state.name.touched && (
+            <ValidationError message={nameError} />
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="password">Password *</label>
@@ -99,7 +109,9 @@ export default class RegistrationForm extends Component {
             id="password"
             onChange={e => this.updateName(e.target.value)}
           />
-          <ValidationError message={this.validatePassword()}/>
+          {this.state.name.touched && (
+            <ValidationError message={passwordError} />
+          )}
           <div className="registration__hint">6 to 72 characters, must include a number</div>
         </div>
         <div className="form-group">
@@ -111,14 +123,24 @@ export default class RegistrationForm extends Component {
             id="repeatPassword"
             onChange={e => this.updateName(e.target.value)}
           />
-          <ValidationError message={this.validateRepeatPassword()}/>
+          {this.state.name.touched && (
+            <ValidationError message={repeatPasswordError} />
+          )}
         </div>
 
         <div className="registration__button__group">
           <button type="reset" className="registration__button">
             Cancel
           </button>
-          <button type="submit" className="registration__button">
+          <button 
+            type="submit" 
+            className="registration__button"
+            disabled={
+              this.validateName() ||
+              this.validatePassword() ||
+              this.validateRepeatPassword()
+            }
+          >
             Save
           </button>
         </div>
