@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './paltrows-power-toes/App';
-import AppLang from './lang-context/AppLang';
+//import './index.css';
+import RegistrationForm from './registrationForm/RegistrationForm';
 
 ReactDOM.render(
-  <AppLang />,
+  <RegistrationForm />,
   document.getElementById('root')
 );
