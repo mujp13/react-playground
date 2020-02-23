@@ -83,6 +83,10 @@ export default class RegistrationForm extends Component {
   }
 
   render() {
+    const nameError = this.validateName();
+    const passwordError = this.validatePassword();
+    const repeatPasswordError = this.validateRepeatPassword();
+
     return (
       <form className="registration" onSubmit={e => this.handleSubmit(e)}>
         <h2>Register</h2>
